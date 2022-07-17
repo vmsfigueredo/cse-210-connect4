@@ -6,7 +6,7 @@ from game.shared.point import Point
 class ControlActorsAction(Action):
     """
     An input action that controls the ghost.
-    
+
     The responsibility of ControlActorsAction is to get the direction and move the snake's head.
 
     Attributes:
@@ -15,7 +15,7 @@ class ControlActorsAction(Action):
 
     def __init__(self, keyboard_service):
         """Constructs a new ControlActorsAction using the specified KeyboardService.
-        
+
         Args:
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
@@ -30,7 +30,7 @@ class ControlActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         ghost = cast.get_first_actor("ghost")
-        
+
         # left
         if self._keyboard_service.is_key_down('a'):
             self._velocity = Point(-constants.CELL_SIZE, 0)

@@ -17,26 +17,25 @@ from game.casting.ghost import Ghost
 
 
 def main():
-    
+
     # create the cast
     cast = Cast()
     cast.add_actor("ghost", Ghost())
     cast.add_actor("turn", Turn())
-    
+
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService(True)
-    
+
     script = Script()
     script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("input", HandleTurns(keyboard_service))
     script.add_action("update", HandleGhostPosition())
     script.add_action("update", HandlePiecesPosition())
     script.add_action("output", DrawActorsAction(video_service))
-    
+
     director = Director(video_service)
     director.start_game(cast, script)
-
 
 
 if __name__ == "__main__":
